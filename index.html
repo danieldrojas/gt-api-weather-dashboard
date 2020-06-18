@@ -27,104 +27,119 @@
             <div class="col-3">
                 <span>Search for a city</span>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search term"
-                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input id="city-input" type="text" class="form-control"
+                        placeholder="Search term"
+                        aria-label="Recipient's username"
+                        aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary " type="button"
-                            id="button-addon2">Button</button>
+                            id="button">Button</button>
+
+                    </div>
+
+                    </input>
+                </div>
+                <div class="row">
+                    <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
                     </div>
                 </div>
-            <div class="row">
-                <div class="card" style="width: 18rem;">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                </div>
-            </div>
 
 
 
 
             </div>
-        
+
             <!-- <main class="main-body"> -->
-            <div class="col-9">
-                <div class="row">
-                    <div class="col">
-                        <div class="card"
-                            style="width: 48rem; height: 17rem; padding: 10px; margin: 15px;">
-                            <div class="card-body">
-                                <h3 id="current-city" class="card-title">City
-                                    <span id="current-day">current day</span>
-                                </h3>
-                                <h6 class="card-subtitle mb-2 text-muted">temp
-                                </h6>
-                                <h6 class="card-subtitle mb-2 text-muted">
-                                    humidity</h6>
-                                <h6 class="card-subtitle mb-2 text-muted">wind
-                                    speed</h6>
-                                <h6 class="card-subtitle mb-2 text-muted">Uv
-                                    index: <span id="uv-index">IndexValue</span>
-                                </h6>
-                                <h6 class="card-subtitle mb-2 text-muted">Card
-                                    subtitle</h6>
+            <section class="col-9">
+                    <div class="row">
+                        <div class="col">
+                            <!-- Top section -->
+                            <div class="card" style="width: 48rem; height: 17rem; padding: 10px; margin: 15px;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6 ">
+                                            <h3 id="current-city"
+                                                class="card-title">
+                                                City
+                                            </h3>
+                                        </div>
+                                        <div class="col-6">
+                                            <span id="current-day">current
+                                                day</span>
+                                        </div>
+                                    </div>                                
+                                </div>
 
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-3"></div>
-                    <h4>5-DAY FORECAST</h4>
-                    <div class="card-deck">
-                            <!-- <img src="..." class="card-img-top" alt="..."> -->
-                            <div class="card-body card text-white bg-primary mb-3">
-                                <h5 class="card-title">Card title</h5>
-                                
-                                <p class="card-text"><small
-                                        class="text-muted">Last updated 3 mins
-                                        ago</small></p>
-                            </div>
-                            <div class="card-body card text-white bg-primary mb-3">
-                                <h5 class="card-title">Card title</h5>
-                                
-                                <p class="card-text"><small
-                                        class="text-muted">Last updated 3 mins
-                                        ago</small></p>
-                            </div>
-                            <div class="card-body card text-white bg-primary mb-3">
-                                <h5 class="card-title">Card title</h5>
-                                
-                                <p class="card-text"><small
-                                        class="text-muted">Last updated 3 mins
-                                        ago</small></p>
-                            </div>
-                            <div class="card-body card text-white bg-primary mb-3">
-                                <h5 class="card-title">Card title</h5>
-                                
-                                <p class="card-text"><small
-                                        class="text-muted">Last updated 3 mins
-                                        ago</small></p>
-                            </div>
-                            <div class="card-body card text-white bg-primary mb-3">
-                                <h5 class="card-title">Card title</h5>
-                                
-                                <p class="card-text"><small
-                                        class="text-muted">Last updated 3 mins
-                                        ago</small></p>
-                            </div>
-                       
+                    <!-- bottom section -->
+                    <div class="row">
+                        <div class="col">
+                            <h4>5-DAY FORECAST</h4>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>        
+                    <!-- Forecast cards -->
+                    <div class="row">
+                        <div class="col card-deck">
+                            <!-- <img src="..." class="card-img-top" alt="..."> -->
+                  
+                            <div id="card-forecast"
+                                class=" col card text-white bg-primary mb-3">
+                                <h5 id="forecast-date-1" class="card-title">Card title</h5>
+                                <h10 id="forecast-temp-1" class="card-title">Card title</h5>
+                                <h10 id="forecast-hum" class="card-title">Card title</h5>
+
+                             
+                              </div>
+                            <div id="card-forecast"
+                                class=" col card text-white bg-primary mb-3">
+                                <h5 id="forecast-date-2" class="card-title">Card title</h5>
+                                <h15 id="forecast-temp" class="card-title">Card title</h15>
+                                <h10 id="forecast-hum" class="card-title">Card title</h5>
+
+                             
+                              </div>
+                            <div id=" card-forecast"
+                                class=" col card text-white bg-primary mb-3">
+                                <h5 id="forecast-date-3" class="card-title">Card title</h5>
+                                <h10 id="forecast-temp" class="card-title">Card title</h5>
+                                <h10 id="forecast-hum" class="card-title">Card title</h5>
+
+                             
+                              </div>
+                            <div id="card-forecast"
+                                class=" col card text-white bg-primary mb-3">
+                                <h5 id="forecast-date-4" class="card-title">Card title</h5>
+                                <h10 id="forecast-temp" class="card-title">Card title</h5>
+                                <h10 id="forecast-hum" class="card-title">Card title</h5>
+
+                             
+                              </div>
+                            <div id="card-forecast"
+                                class=" col card text-white bg-primary mb-3">
+                                <h5 id="forecast-date-5" class="card-title">Card title</h5>
+                                <h10 id="forecast-temp" class="card-title">Card title</h5>
+                                <h10 id="forecast-hum" class="card-title">Card title</h5>
+
+                             
+                              </div>
+                            </div>
+            </section>
+    </div>
+    </div>
     </div>
 
 
 
-
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript" src="./assets/script.js"></script>
 </body>
 
