@@ -4,18 +4,10 @@ $(document).ready(function () {
 
     var currentDay = moment().format('l');
 
-
-    // for (var i = 1; i <= 5; i++) {
-    //     $(".card-deck").append($("<div id='card-forecast' class='card text-white bg-primary mb-3'>" +  "<h5 class='card-date'>" + currentDay + "</h5>" + "</div>"))
-           
-
-    // }
 //Filling dates in forecast cards
     for (var i = 1; i <=5; i++){
         $("#forecast-date-" + i).text(currentDay)
     }
-
-
 
     function JSONresponse(city) {
 
@@ -34,11 +26,9 @@ $(document).ready(function () {
             var cityName = response.name 
             var temp = response.main.temp
             var hum = response.main.humidity
-            // $("#temp").text("Temperature: " + temp + " F")
-            // $("#temp").append("Temperature: " + temp + " F")
+           
 
             
-                $("#forecast-temp-1").text("Temperatura: " + temp)
 
 
             
@@ -90,42 +80,18 @@ $(document).ready(function () {
                 url: dailyForecastUrl,
                 method: "get"
             }).then(function (responseForecast) {
-                // console.log("40 day forecast below")
-                // console.log(responseForecast.daily[0].uvi)
+                console.log(responseForecast)
 
                 cityProperties()
                 $(".card-body").append($("<h6>" + 'UV Indexs: ' + responseForecast.daily[0].uvi + "</h6>"))
 
-                // $(".card-deck").append($("<div id='card-current-day-1'" +
-                //     "class='card-body card text-white bg-primary mb-3'>" +
-                //     "<h5 class='card-title'>" + 'Card title' + "</h5>"))
+                for (var i = 1; i <= 5; i++){
+                    $("#forecast-temp-" + i).text(responseForecast.daily[i].temp.day + " F")
+                    $("#forecast-hum-" + i).text(responseForecast.daily[i].humidity + "%")
 
+                }
+               
 
-
-                // console.log(response.coord.lon)
-                // console.log(response.coord.lat)
-                // latitude = response.coord.lat
-
-                // console.log(longitude)
-                // console.log(latitude)
-
-                // var headline = response.response.docs[0].headline.main;
-                // var byline = response.response.docs[0].byline.original
-                // console.log(headline);
-                // console.log(byline);
-
-                // for (var i = 0; i < 5; i++) {
-                //     var headline = response.response.docs[i].headline.main;
-                //     console.log(headline);
-                //     var byline = response.response.docs[i].byline.original
-
-                //     if (byline === null) {
-                //         byline = "The New York Times"
-                //     }
-
-                //     console.log(byline);
-
-                // }
 
 
             })
