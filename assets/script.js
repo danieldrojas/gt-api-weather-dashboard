@@ -80,14 +80,38 @@ $(document).ready(function () {
                 url: dailyForecastUrl,
                 method: "get"
             }).then(function (responseForecast) {
-                console.log(responseForecast)
+                console.log('this is responseForcast',responseForecast)
 
                 cityProperties()
                 $(".card-body").append($("<h6>" + 'UV Indexs: ' + responseForecast.daily[0].uvi + "</h6>"))
 
                 for (var i = 1; i <= 5; i++){
-                    $("#forecast-temp-" + i).text(responseForecast.daily[i].temp.day + " F")
-                    $("#forecast-hum-" + i).text(responseForecast.daily[i].humidity + "%")
+                    var momentDate = moment().add(i, 'days')
+                    
+                    console.log('this is our date to putttt', momentDate.format('l'))
+    
+                    var cardDiv = $('<div>').attr('id', "card-forecast").addClass('card text-white bg-primary')
+                    
+                    var date = $('<h5>').addClass("card-title")
+                    date.attr('id', 'forecast-date-' + i)
+                    date.text(momentDate.format('l'))
+                    
+                    var temp = $('<h5>').addClass("card-title style='margin:20px'")
+                    temp.attr('id', 'forecast-temp-' + i)
+                    temp.attr('style', 'font-size: .8rem')
+                    temp.text("Temp: " + responseForecast.daily[i].temp.day + " °F")
+                    
+                    var humidity = $('<h5>').addClass("card-title")
+                    humidity.attr('id', 'forecast-hum-' + i)
+                    humidity.attr('style', 'font-size: .8rem')
+                    humidity.text("Humidity: " + responseForecast.daily[i].humidity + '%')
+
+
+                    cardDiv.append(date, temp, humidity)
+
+                    $('.card-deck').append(cardDiv);
+
+
 
                 }
                
