@@ -1,17 +1,19 @@
 $(document).ready(function () {
-    console.log("inside the function");
+    var arrayOfCities = []
+    var ulEl = $('<ul>').addClass("card list-group list-group-flush")
+
 
     
     var citiesEntered = localStorage.getItem("citiesEntered")
 
     if (citiesEntered) {
-        var arrayOfCities = JSON.parse(citiesEntered)
+        arrayOfCities = JSON.parse(citiesEntered)
         // lastCities()
     } else {
-        var arrayOfCities = []
+        arrayOfCities = []
     }
-
   
+    console.log(arrayOfCities)
     
 
 
@@ -106,14 +108,11 @@ $(document).ready(function () {
 
     }
 
-
-
-
-
-
     //events 
     $("#button").on("click", function (event) {
         event.preventDefault();
+        $(ulEl).empty()
+
         var inputCity = $("#city-input").val()
 
 
@@ -124,12 +123,18 @@ $(document).ready(function () {
 
 
         // function listOfCities() {
-        var ulEl = $('<ul>').addClass("card list-group list-group-flush")
-        var liEl = $('<li>').addClass("list-group-item")
-        liEl.text(inputCity)
-        ulEl.append(liEl)
-        $("#last-cities").append(ulEl)
-        $("#city-input").val("")
+       
+        for (var i = 0; i < arrayOfCities.length; i++){
+            var liEl = $('<li>').addClass("list-group-item")
+            if (i < 10) {
+                liEl.text(arrayOfCities[i])
+                ulEl.append(liEl)
+                $("#last-cities").append(ulEl)
+                $("#city-input").val("")
+            }        
+
+        }
+        
 
 
 
