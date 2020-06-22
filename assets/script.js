@@ -58,7 +58,7 @@ $(document).ready(function () {
 
         var APIkey = "2b1b04454e5d2f933e132a9826bc8f83"
         //current weather API
-        var queryCurrentUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey + "&units=imperial"
+        var queryCurrentUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey + "&units=imperial"
 
         $.ajax({
             url: queryCurrentUrl,

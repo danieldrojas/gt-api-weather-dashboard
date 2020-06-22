@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta http-equiv="Content-Security-Policy"
+        content="upgrade-insecure-requests">
     <title>Weather Dashboard</title>
 
     <link rel="stylesheet"
@@ -41,7 +42,7 @@
                 </div>
                 <div class="row">
                     <div id="last-cities" class="card" style="width: 18rem;">
-                       
+
                     </div>
                 </div>
 
@@ -52,41 +53,42 @@
 
             <!-- <main class="main-body"> -->
             <section class="col-9">
-                    <div class="row">
-                        <div class="col">
-                            <!-- Top section -->
-                            <div class="card" style="width: 48rem; height: 17rem; padding: 10px; margin: 15px;">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-6 ">
-                                            <h3 id="current-city"
-                                                class="card-title">
-                                                City
-                                            </h3>
-                                        </div>
-                                        <div class="col-6">
-                                            <span id="current-day">current
-                                                day</span>
-                                        </div>
-                                    </div>                                
+                <div class="row">
+                    <div class="col">
+                        <!-- Top section -->
+                        <div class="card"
+                            style="width: 48rem; height: 17rem; padding: 10px; margin: 15px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6 ">
+                                        <h3 id="current-city"
+                                            class="card-title">
+                                            City
+                                        </h3>
+                                    </div>
+                                    <div class="col-6">
+                                        <span id="current-day">current
+                                            day</span>
+                                    </div>
                                 </div>
+                            </div>
 
-                            </div>
                         </div>
                     </div>
-                    <!-- bottom section -->
-                    <div class="row">
-                        <div class="col">
-                            <h4>5-DAY FORECAST</h4>
-                        </div>
+                </div>
+                <!-- bottom section -->
+                <div class="row">
+                    <div class="col">
+                        <h4>5-DAY FORECAST</h4>
                     </div>
-                    <!-- Forecast cards -->
-                    <div class="row">
-                        <div id="fore-card"class="col card-deck">
-                            
-                            </div>
+                </div>
+                <!-- Forecast cards -->
+                <div class="row">
+                    <div id="fore-card" class="col card-deck">
+
+                    </div>
             </section>
-    </div>
+        </div>
     </div>
     </div>
 
