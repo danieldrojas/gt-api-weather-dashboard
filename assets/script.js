@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     if (arrayOfCities.length < 10) {
         for (var i = 0; i < 10; i++) {
-            var liEl = $('<li>').addClass("list-group-item")
+            var liEl = $('<button>').addClass("list-group-item")
         
             liEl.text(arrayOfCities[i])
             ulEl.append(liEl)
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         for (var i = 0; i < 9; i++) {
             swappedCitiesArray[i] = arrayOfCities[i + 1]
-            var liEl = $('<li>').addClass("list-group-item")
+            var liEl = $('<button>').addClass("list-group-item")
             liEl.text(swappedCitiesArray[i])
             ulEl.append(liEl)
             $("#last-cities").append(ulEl)
@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     
 
-    console.log(arrayOfCities)
+    // console.log(arrayOfCities)
     
 
 
@@ -64,8 +64,7 @@ $(document).ready(function () {
             url: queryCurrentUrl,
             method: "get"
         }).then(function (response) {
-            // console.log("bellow current weather")
-            // console.log(response)
+           
             var lon = response.coord.lon
             var lat = response.coord.lat
             var cityName = response.name
@@ -76,7 +75,6 @@ $(document).ready(function () {
 
 
 
-            // var h6El = $("#main-properties");
             function cityProperties() {
                 $(".card-body").empty();
                 $(".card-body").append($("<h6>" + cityName + "</h6>"))
@@ -86,6 +84,7 @@ $(document).ready(function () {
             }
 
 
+         
             //40 days forecast
             var dailyForecastUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely,current&appid=" + APIkey + "&units=imperial"
 
@@ -93,7 +92,6 @@ $(document).ready(function () {
                 url: dailyForecastUrl,
                 method: "get"
             }).then(function (responseForecast) {
-                console.log('this is responseForcast', responseForecast)
 
                 cityProperties()
                 $(".card-body").append($("<h6>" + 'UV Indexs: ' + responseForecast.daily[0].uvi + "</h6>"))
@@ -158,7 +156,7 @@ $(document).ready(function () {
 
         // function listOfCities() {
         for (var i = 0; i < arrayOfCities.length; i++) {
-            var liEl = $('<li>').addClass("list-group-item")
+            var liEl = $('<button>').addClass("list-group-item")
             if (i < 10) {
                 liEl.text(arrayOfCities[i])
                 ulEl.append(liEl)
@@ -168,8 +166,15 @@ $(document).ready(function () {
 
         }
 
+
+
         
 
+        $("#last-cities").on("click", function (event) {
+            event.preventDefault();
+            cityProperties()
+
+        })
 
 
 
@@ -177,9 +182,7 @@ $(document).ready(function () {
         // listOfCities()    
         JSONresponse(inputCity);
     })
-
-
-
+ 
 
 
 
