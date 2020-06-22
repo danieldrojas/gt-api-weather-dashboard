@@ -1,5 +1,7 @@
 $(document).ready(function () {
     var arrayOfCities = []
+  var  swappedCitiesArray =[]
+    
     var ulEl = $('<ul>').addClass("card list-group list-group-flush")
 
 
@@ -12,13 +14,47 @@ $(document).ready(function () {
     } else {
         arrayOfCities = []
     }
-  
+    console.log("Normal array of cities", arrayOfCities)
+
+    if (arrayOfCities.length < 10) {
+        for (var i = 0; i < 10; i++) {
+            var liEl = $('<li>').addClass("list-group-item")
+        
+            liEl.text(arrayOfCities[i])
+            ulEl.append(liEl)
+            $("#last-cities").append(ulEl)
+            $("#city-input").val("")
+        }
+    } else {
+        
+
+        for (var i = 0; i < 9; i++) {
+            swappedCitiesArray[i] = arrayOfCities[i + 1]
+            var liEl = $('<li>').addClass("list-group-item")
+            liEl.text(swappedCitiesArray[i])
+            ulEl.append(liEl)
+            $("#last-cities").append(ulEl)
+            $("#city-input").val("")
+        }
+        
+
+        $("#city-input").val("")
+        
+    }
+        
+
+    
+
+    
+
     console.log(arrayOfCities)
     
 
 
 
     function JSONresponse(city) {
+        $("#fore-card").empty()
+
 
         var APIkey = "2b1b04454e5d2f933e132a9826bc8f83"
         //current weather API
@@ -42,13 +78,11 @@ $(document).ready(function () {
 
             // var h6El = $("#main-properties");
             function cityProperties() {
+                $(".card-body").empty();
                 $(".card-body").append($("<h6>" + cityName + "</h6>"))
                 $(".card-body").append($("<h6>" + 'Temperature: ' + temp + ' F' + "</h6>"))
                 $(".card-body").append($("<h6>" + 'Humidity: ' + hum + '%' + "</h6>"))
                 $(".card-body").append($("<h6>" + 'Wind Spped: ' + response.wind.speed + ' MPH' + "</h6>"))
-
-
-
             }
 
 
@@ -123,17 +157,17 @@ $(document).ready(function () {
 
 
         // function listOfCities() {
-       
-        for (var i = 0; i < arrayOfCities.length; i++){
+        for (var i = 0; i < arrayOfCities.length; i++) {
             var liEl = $('<li>').addClass("list-group-item")
             if (i < 10) {
                 liEl.text(arrayOfCities[i])
                 ulEl.append(liEl)
                 $("#last-cities").append(ulEl)
                 $("#city-input").val("")
-            }        
+            }
 
         }
+
         
 
 
@@ -142,7 +176,6 @@ $(document).ready(function () {
 
         // listOfCities()    
         JSONresponse(inputCity);
-        $(".card-body").empty()
     })
 
 
