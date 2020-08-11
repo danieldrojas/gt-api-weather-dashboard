@@ -1,11 +1,11 @@
 $(document).ready(function () {
     var arrayOfCities = []
-  var  swappedCitiesArray =[]
-    
+    var swappedCitiesArray = []
+
     var ulEl = $('<ul>').addClass("card list-group list-group-flush")
 
+    ulEl.hide();
 
-    
     var citiesEntered = localStorage.getItem("citiesEntered")
 
     if (citiesEntered) {
@@ -14,21 +14,23 @@ $(document).ready(function () {
     } else {
         arrayOfCities = []
     }
-    console.log("Normal array of cities", arrayOfCities)
-
+    // console.log("Normal array of cities", arrayOfCities)
+    if (arrayOfCities.length > 0) {
+        ulEl.show()
+    }
     if (arrayOfCities.length < 10) {
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < arrayOfCities.length; i++) {
             var liEl = $('<button>').addClass("list-group-item")
-        
+
             liEl.text(arrayOfCities[i])
             ulEl.append(liEl)
             $("#last-cities").append(ulEl)
             $("#city-input").val("")
         }
     } else {
-        
 
-        for (var i = 0; i < 9; i++) {
+
+        for (var i = 0; i < arrayOfCities.length; i++) {
             swappedCitiesArray[i] = arrayOfCities[i + 1]
             var liEl = $('<button>').addClass("list-group-item")
             liEl.text(swappedCitiesArray[i])
@@ -36,25 +38,14 @@ $(document).ready(function () {
             $("#last-cities").append(ulEl)
             $("#city-input").val("")
         }
-        
+
 
         $("#city-input").val("")
-        
+
     }
-        
-
-    
-
-    
-
-    // console.log(arrayOfCities)
-    
-
-
 
     function JSONresponse(city) {
-        $("#fore-card").empty()
-
+        $("#fore-card").empty();
 
         var APIkey = "2b1b04454e5d2f933e132a9826bc8f83"
         //current weather API
@@ -64,7 +55,7 @@ $(document).ready(function () {
             url: queryCurrentUrl,
             method: "get"
         }).then(function (response) {
-           
+
             var lon = response.coord.lon
             var lat = response.coord.lat
             var cityName = response.name
@@ -84,7 +75,7 @@ $(document).ready(function () {
             }
 
 
-         
+
             //40 days forecast
             var dailyForecastUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely,current&appid=" + APIkey + "&units=imperial"
 
@@ -168,23 +159,13 @@ $(document).ready(function () {
 
 
 
-        
 
-        $("#last-cities").on("click", function (event) {
-            event.preventDefault();
-            cityProperties()
 
-        })
-
+     
 
 
 
         // listOfCities()    
         JSONresponse(inputCity);
     })
- 
-
-
-
-
 })
